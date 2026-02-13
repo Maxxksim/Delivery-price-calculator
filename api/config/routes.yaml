@@ -1,0 +1,13 @@
+
+controllers:
+    resource: routing.controllers
+
+api_shipping_show:
+    path: /api/shipping/carriers
+    controller: App\Controller\ShippingApiController::show
+    methods: GET
+
+api_shipping_calculate:
+    path: /api/shipping/calculate
+    controller: App\Controller\ShippingApiController::calculate
+    methods: POST

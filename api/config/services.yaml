@@ -1,0 +1,25 @@
+parameters:
+
+services:
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+
+    App\:
+        resource: '../src/'
+
+
+    App\Strategies\:
+        resource: '../src/Strategies/*'
+        exclude:
+            - '../src/Strategies/StrategyInterface.php'
+        tags: [ 'shipping.strategy' ]
+
+    App\Service\ShippingService:
+        arguments:
+            $strategies: !tagged_iterator shipping.strategy
+
+    Symfony\Component\Serializer\Normalizer\PropertyNormalizer: ~
+    Symfony\Component\Serializer\Encoder\JsonEncoder: ~
